@@ -1,8 +1,8 @@
 services:
-  web-app-php:
+  meeting-calendar-app:
     build:
       context: .
-    container_name: web-app-php-service
+    container_name: meeting-calendar-service
     ports:
       - "8000:8000"
     develop:
@@ -16,10 +16,11 @@ services:
           action: rebuild
     depends_on:
       - mongodb
+      - postgresql
 
   mongodb:
     image: mongo:latest
-    container_name: web-app-php-mongodb
+    container_name: meeting-calendar-mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootPassword
@@ -27,11 +28,11 @@ services:
     ports:
       - "27111:27017"
     volumes:
-      - web-app-php-mongodb:/data/db/mongodb
+      - meeting-calendar-mongodb:/data/db/mongodb
 
   postgresql:
     image: postgres:15
-    container_name: web-app-php-postgresql
+    container_name: meeting-calendar-postgresql
     restart: always
     environment:
       POSTGRES_USER: user
@@ -40,10 +41,10 @@ services:
     ports:
       - "5112:5432"
     volumes:
-      - web-app-php-postgresql:/data/db/postgresql
+      - meeting-calendar-postgresql:/data/db/postgresql
 
 volumes:
-  web-app-php-mongodb:
+  meeting-calendar-mongodb:
     driver: local
-  web-app-php-postgresql:
+  meeting-calendar-postgresql:
     driver: local
