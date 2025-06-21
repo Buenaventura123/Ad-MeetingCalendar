@@ -1,3 +1,7 @@
+<?php
+include_once 'handlers/mongodbChecker.handler.php';
+include_once 'handlers/postgreChecker.handler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +13,6 @@
 
 <body>
     <h1>Database Connection Status:</h1>
-    <?php
-    include_once 'handlers/mongodbChecker.handler.php';
-    include_once 'handlers/postgreChecker.handler.php';
-    ?>
 </body>
 
 </html>
