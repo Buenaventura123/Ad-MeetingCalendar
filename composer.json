@@ -1,10 +1,10 @@
 {
-    "name": "your-username-here/project-name-here",
+    "name": "buenaventura123/ad-meetingcalendar",
     "type": "project",
     "authors": [
         {
-            "name": "your-username-here",
-            "email": "your-email-here@gmail.com"
+            "name": "buenaventura123",
+            "email": "202310536@fit.edu.ph"
         }
     ],
     "scripts": {
