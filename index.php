@@ -10,9 +10,8 @@
 <body>
     <h1>Database Connection Status:</h1>
     <?php
-    // Adjust paths if your checker files are in a 'handlers' subdirectory, etc.
-    include_once 'mongodbChecker.handler.php';
-    include_once 'postgreChecker.handler.php';
+    include_once 'handlers/mongodbChecker.handler.php';
+    include_once 'handlers/postgreChecker.handler.php';
     ?>
 </body>
 
