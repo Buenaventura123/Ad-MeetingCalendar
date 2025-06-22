@@ -16,32 +16,23 @@ $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass'], [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 ]);
 
-// ——— Reset Tables ———
-echo "Truncating tables…\n";
-foreach (['meeting_users', 'task', 'meeting', 'users'] as $table) {
-    $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
+// Just indicator it was working
+echo "Applying schema from database/user.model.sql…\n";
+
+$sql = file_get_contents(BASE_PATH . '/sql/models/user.model.sql');
+
+// Another indicator but for failed creation
+if ($sql === false) {
+    throw new RuntimeException("Could not read database/user.model.sql");
+} else {
+    echo "Creation Success from the database/user.model.sql";
 }
 
-// ——— Recreate Tables from SQL files ———
-$schemaFiles = [
-    'sql/models/user.model.sql',
-    'sql/models/meeting.model.sql',
-    'sql/models/meeting_users.model.sql',
-    'sql/models/task.model.sql',
-];
+// If your model.sql contains a working command it will be executed
+$pdo->exec($sql);
 
-foreach ($schemaFiles as $file) {
-    echo "Applying schema from {$file}…\n";
-    $sql = file_get_contents($file);
-
-    if ($sql === false) {
-        throw new RuntimeException("❌ Could not read {$file}");
-    }
-
-    try {
-        $pdo->exec($sql);
-        echo "✅ Created tables from {$file}\n";
-    } catch (PDOException $e) {
-        echo "❌ Error in {$file}: {$e->getMessage()}\n";
-    }
+// Clean the tables
+echo "Truncating tables…\n";
+foreach (['users'] as $table) {
+    $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
 }

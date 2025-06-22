@@ -8,6 +8,7 @@
         }
     ],
     "scripts": {
+        "postgresql:reset": "php utils/dbResetPostgresql.util.php",
         "start": "php -S localhost:8000 router.php"
     },
     "require": {
