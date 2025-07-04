@@ -19,7 +19,7 @@ $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass'], [
 // Just indicator it was working
 echo "Applying schema from database/user.model.sql…\n";
 
-$sql = file_get_contents(BASE_PATH . '/sql/models/user.model.sql');
+$sql = file_get_contents(BASE_PATH . '/database/models/user.model.sql');
 
 // Another indicator but for failed creation
 if ($sql === false) {
