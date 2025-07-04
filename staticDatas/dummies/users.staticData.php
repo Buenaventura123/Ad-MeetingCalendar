@@ -8,4 +8,11 @@ return [
         'password' => 'p@ssW0rd1234',
         'role' => 'designer'
     ],
+    [
+        'username' => 'Rylie_Buenaventura',
+        'first_name' => 'Rylie',
+        'last_name' => 'Buneventura',
+        'password' => '1234Admin',
+        'role' => 'admin'
+    ],
 ];

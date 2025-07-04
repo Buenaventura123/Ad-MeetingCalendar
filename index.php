@@ -13,6 +13,8 @@ include_once 'handlers/postgreChecker.handler.php';
 
 <body>
     <h1>Database Connection Status:</h1>
+    <a href="/pages/login/index.php">
+        <button>🔐 Go to Login</button>
 </body>
 
 </html>

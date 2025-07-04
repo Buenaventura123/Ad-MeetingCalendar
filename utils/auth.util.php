@@ -1,59 +1,49 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 class Auth
 {
-    // Login logic
+    // ✅ 1. Initialize session
+    public static function init()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
+    // ✅ 2. Perform login
     public static function login(PDO $pdo, string $username, string $password): bool
     {
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+        self::init();
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
         $stmt->execute([':username' => $username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user'] = [
-                'id' => $user['id'],
-                'username' => $user['username'],
-                'role' => $user['role'],
-                'name' => $user['first_name'] . ' ' . $user['last_name'],
-            ];
+            $_SESSION['user'] = $user;
             return true;
         }
 
         return false;
     }
 
-    // Get current user
-    public static function user(): array|null
+    // ✅ 3. Get current user
+    public static function user(): ?array
     {
+        self::init();
         return $_SESSION['user'] ?? null;
     }
 
-    // Check if user is logged in
+    // ✅ 4. Check if user is logged in
     public static function check(): bool
     {
+        self::init();
         return isset($_SESSION['user']);
     }
 
-    // Logout logic
+    // ✅ 5. Logout
     public static function logout(): void
     {
+        self::init();
         session_unset();
         session_destroy();
-
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(
-                session_name(),
-                '',
-                time() - 42000,
-                $params["path"],
-                $params["domain"],
-                $params["secure"],
-                $params["httponly"]
-            );
-        }
     }
 }
