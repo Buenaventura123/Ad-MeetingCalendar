@@ -27,14 +27,14 @@ foreach ([
 }
 
 // ——— Applying schema ———
-echo "Applying schema from database/user.model.sql…\n";
+echo "Applying schema from database/models/user.model.sql…\n";
 
-$sql = file_get_contents('database/user.model.sql');
+$sql = file_get_contents('database/models/user.model.sql');
 
 if ($sql === false) {
-    throw new RuntimeException("❌ Could not read database/user.model.sql");
+    throw new RuntimeException("❌ Could not read database/models/user.model.sql");
 } else {
-    echo "✅ Creation Success from the database/user.model.sql\n";
+    echo "✅ Creation Success from the database/models/user.model.sql\n";
 }
 
 $pdo->exec($sql);
