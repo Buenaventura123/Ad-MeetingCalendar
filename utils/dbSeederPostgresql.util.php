@@ -11,7 +11,7 @@ require 'bootstrap.php';
 require_once UTILS_PATH . '/envSetter.util.php';
 
 // 4) Load static dummy data
-$users = require_once BASE_PATH . '/staticData/dummies/users.staticData.php';
+$users = require_once DUMMIES_PATH . '/users.staticData.php';
 
 // 5) Connect to PostgreSQL
 $dsn = "pgsql:host={$pgConfig['host']};port={$pgConfig['port']};dbname={$pgConfig['db']}";
