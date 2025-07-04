@@ -10,29 +10,33 @@ require 'bootstrap.php';
 // 3) envSetter
 require_once UTILS_PATH . '/envSetter.util.php';
 
-// ——— Connect to PostgreSQL ———
+// 4) Load static dummy data
+$users = require_once BASE_PATH . '/staticData/dummies/users.staticData.php';
+
+// 5) Connect to PostgreSQL
 $dsn = "pgsql:host={$pgConfig['host']};port={$pgConfig['port']};dbname={$pgConfig['db']}";
 $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass'], [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 ]);
 
-// Just indicator it was working
-echo "Applying schema from database/user.model.sql…\n";
+// 6) Seeding Logic
+echo "Seeding users…\n";
 
-$sql = file_get_contents(BASE_PATH . '/sql/models/user.model.sql');
+// Prepare query
+$stmt = $pdo->prepare("
+    INSERT INTO users (username, role, first_name, last_name, password)
+    VALUES (:username, :role, :fn, :ln, :pw)
+");
 
-// Another indicator but for failed creation
-if ($sql === false) {
-    throw new RuntimeException("Could not read database/user.model.sql");
-} else {
-    echo "Creation Success from the database/user.model.sql";
+// Execute dummy inserts
+foreach ($users as $u) {
+    $stmt->execute([
+        ':username' => $u['username'],
+        ':role' => $u['role'],
+        ':fn' => $u['first_name'],
+        ':ln' => $u['last_name'],
+        ':pw' => password_hash($u['password'], PASSWORD_DEFAULT),
+    ]);
 }
 
-// If your model.sql contains a working command it will be executed
-$pdo->exec($sql);
-
-// Clean the tables
-echo "Truncating tables…\n";
-foreach (['users'] as $table) {
-    $pdo->exec("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE;");
-}
+echo "✅ PostgreSQL seeding complete!\n";
