@@ -5,7 +5,6 @@
 <br />
 <div align="center">
   <a href="https://github.com/zyx-0314/">
-    <img src="./assets/img/nyebe_white.png" alt="Nyebe" width="130" height="100">
   </a>
   <h3 align="center">MEETING CALENDAR</h3>
 </div>
@@ -14,8 +13,6 @@
 </div>
 
 <br />
-
-<!-- TODO: Change the WD-Template-Project into the same name of your folder -->
 
 ![](https://visit-counter.vercel.app/counter.png?page=Buenaventura123/AD-Task-MeetingCalendar)
 
@@ -135,11 +132,7 @@ AD-ProjectName
 
 ## Resources
 
-<!-- TODO: Add References -->
-
-| Title        | Purpose                                                                       | Link          |
-| ------------ | ----------------------------------------------------------------------------- | ------------- |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
-| Sample Title | Sample purpose would be here like this and this is the example of what it is. | trykolang.com |
+| Title          | Purpose                                                                       | Link              |
+| -------------- | ----------------------------------------------------------------------------- | ----------------- |
+| Stack Overflow | references and error code solver                                              | stackoverflow.com |
+| W3schools      | reference code and syntax checker                                             | www.w3schools.com |
