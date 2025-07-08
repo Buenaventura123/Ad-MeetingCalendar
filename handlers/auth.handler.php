@@ -29,7 +29,7 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (Auth::login($pdo, $usernameInput, $passwordInput)) {
         $user = Auth::user();
 
-        if ($user["role"] == "team lead") {
+        if ($user["role"] == "admin") {
             header('Location: /pages/users/index.php');
         } else {
             header('Location: /index.php');
