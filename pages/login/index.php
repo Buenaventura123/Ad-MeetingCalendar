@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+declare(strict_types=1);
 
-<head>
-    <meta charset="UTF-8">
-    <title>Login | Meeting Calendar</title>
-    <link rel="stylesheet" href="assets/css/login.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+require_once __DIR__ . '/../../bootstrap.php';
+require_once UTILS_PATH . '/auth.util.php';
+Auth::init();
 
-<body>
+require_once BASE_PATH . '/layouts/main.layout.php';
 
+renderMainLayout(function () {
+    ?>
     <div class="login-container">
-        <? include BASE_PATH . '/components/componentGroup/header.component.php'; ?>
+        <h1 class="title">Meeting Calendar</h1>
         <h2 class="subtitle">Login to Your Account</h2>
 
         <?php if (isset($_GET['error'])): ?>
@@ -30,10 +29,14 @@
             </div>
 
             <button type="submit" class="btn-login">Login</button>
-
-            <? include BASE_PATH . '/components/componentGroup/footer.component.php'; ?>
         </form>
     </div>
-</body>
-
-</html>
+    <?php
+}, "Login Page", [
+    'css' => [
+        '/pages/login/assets/css/login.css',
+        '/assets/css/navbar.css',
+        '/assets/css/footer.css',
+        '/assets/css/layout.css',
+    ],
+]);

@@ -1,0 +1,31 @@
+/* --- Layout Structure --- */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    text-align: center;
+    color: #333;
+    margin-top: auto;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
