@@ -49,6 +49,5 @@ elseif ($action === 'logout') {
     exit;
 }
 
-// If no valid action, redirect to login
 header('Location: /pages/login/index.php');
 exit;
