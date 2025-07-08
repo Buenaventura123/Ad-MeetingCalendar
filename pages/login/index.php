@@ -3,25 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login Page</title>
+    <title>Login | Meeting Calendar</title>
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
 <body>
-    <h2>Login</h2>
+    <div class="login-container">
+        <h1 class="title">Meeting Calendar</h1>
+        <h2 class="subtitle">Login to Your Account</h2>
 
-    <?php if (isset($_GET['error'])): ?>
-        <p style="color: red;">⚠️ <?= htmlspecialchars($_GET['error']) ?></p>
-    <?php endif; ?>
+        <?php if (isset($_GET['error'])): ?>
+            <div class="error-msg">⚠️ <?= htmlspecialchars($_GET['error']) ?></div>
+        <?php endif; ?>
 
-    <form action="/handlers/auth.handler.php?action=login" method="POST">
-        <label for="username">Username:</label><br>
-        <input id="username" name="username" type="text" required /><br>
+        <form class="login-form" action="/handlers/auth.handler.php?action=login" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" required placeholder="Enter your username">
+            </div>
 
-        <label for="password">Password:</label><br>
-        <input id="password" name="password" type="password" required /><br><br>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" required placeholder="Enter your password">
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+    </div>
 </body>
 
 </html>
