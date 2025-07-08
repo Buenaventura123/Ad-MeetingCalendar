@@ -22,13 +22,11 @@ $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass'], [
 // 6) Seeding Logic
 echo "Seeding users…\n";
 
-// Prepare query
 $stmt = $pdo->prepare("
     INSERT INTO users (username, role, first_name, last_name, password)
     VALUES (:username, :role, :fn, :ln, :pw)
 ");
 
-// Execute dummy inserts
 foreach ($users as $u) {
     $stmt->execute([
         ':username' => $u['username'],

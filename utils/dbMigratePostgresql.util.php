@@ -22,11 +22,9 @@ foreach ([
     'projects',
     'users',
 ] as $table) {
-    // Use IF EXISTS so it won’t error if the table is already gone
     $pdo->exec("DROP TABLE IF EXISTS {$table} CASCADE;");
 }
 
-// ——— Applying schema ———
 echo "Applying schema from database/models/user.model.sql…\n";
 
 $sql = file_get_contents('database/models/user.model.sql');

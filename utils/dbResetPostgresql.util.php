@@ -16,19 +16,16 @@ $pdo = new PDO($dsn, $pgConfig['user'], $pgConfig['pass'], [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 ]);
 
-// Just indicator it was working
 echo "Applying schema from database/user.model.sql…\n";
 
 $sql = file_get_contents(BASE_PATH . '/database/models/user.model.sql');
 
-// Another indicator but for failed creation
 if ($sql === false) {
     throw new RuntimeException("Could not read database/user.model.sql");
 } else {
     echo "Creation Success from the database/user.model.sql";
 }
 
-// If your model.sql contains a working command it will be executed
 $pdo->exec($sql);
 
 // Clean the tables
