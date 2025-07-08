@@ -1,7 +1,7 @@
 <?php
 class Auth
 {
-    // ✅ 1. Initialize session
+    // Initialize session
     public static function init()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -9,7 +9,7 @@ class Auth
         }
     }
 
-    // ✅ 2. Perform login
+    // Perform login
     public static function login(PDO $pdo, string $username, string $password): bool
     {
         self::init();
@@ -25,21 +25,21 @@ class Auth
         return false;
     }
 
-    // ✅ 3. Get current user
+    //Get current user
     public static function user(): ?array
     {
         self::init();
         return $_SESSION['user'] ?? null;
     }
 
-    // ✅ 4. Check if user is logged in
+    // Check if user is logged in
     public static function check(): bool
     {
         self::init();
         return isset($_SESSION['user']);
     }
 
-    // ✅ 5. Logout
+    // Logout
     public static function logout(): void
     {
         self::init();
