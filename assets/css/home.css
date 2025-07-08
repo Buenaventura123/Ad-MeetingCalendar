@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.status-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.status-box h2 {
+    margin-bottom: 1rem;
+}
+
+.success {
+    color: green;
+}
+
+.fail {
+    color: red;
+}
+
+.go-login {
+    margin-top: 1.5rem;
+}
+
+.go-login a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
