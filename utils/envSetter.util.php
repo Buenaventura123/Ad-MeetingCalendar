@@ -1,8 +1,7 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../bootstrap.php';
-$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
-$dotenv->load();
+require_once __DIR__ . '/../vendor/autoload.php';
+
 
 $mongoConfig = [
     'uri' => $_ENV['MONGO_URI'],
