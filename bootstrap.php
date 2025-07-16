@@ -9,6 +9,5 @@ chdir(BASE_PATH);
 
 require_once BASE_PATH . '/vendor/autoload.php';
 
-// ✅ Load .env
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
